@@ -15,16 +15,6 @@ then
         ln -s /srv/${GAME}/addons /srv/${GAME}/serverfiles/garrysmod
     fi
 
-    tar -zxvf /tmp/mm.tar.gz -C /srv/${GAME}
-    tar -zxvf /tmp/sm.tar.gz -C /srv/${GAME}
-    if [ ! -d /srv/${GAME}/sourcemod ]
-    then
-        mkdir /srv/${GAME}/sourcemod/
-    fi
-    mv /srv/${GAME}/addons/sourcemod/* /srv/${GAME}/sourcemod/
-    rm -rf /srv/${GAME}/addons/sourcemod
-    ln -s /srv/${GAME}/sourcemod/ /srv/${GAME}/addons
-
     touch /srv/${GAME}/addons/.speranza
 fi
 
