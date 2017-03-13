@@ -14,6 +14,9 @@ ENV SRCDS_GAME garrysmod
 COPY update.txt /srv/srcds/update.txt
 COPY start.sh /srv/srcds/start.sh
 
+# Copy cfg
+COPY server.cfg /srv/srcds/serverfiles/left4dead2/cfg/server.cfg
+
 # Install dependencies & assign files ownership
 RUN apt-get update \
     && apt-get -y install lib32ncurses5 \
