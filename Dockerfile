@@ -27,4 +27,4 @@ RUN apt-get update \
 # Switch to non root user
 USER gameserver
 
-CMD ["-game garrysmod", "+map gm_construct"]
+CMD ["+map gm_construct", "-tickrate 16"]
