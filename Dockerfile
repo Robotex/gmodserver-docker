@@ -8,8 +8,8 @@ ENV BIND_PORT=27015
 ENV BIND_IP=0.0.0.0
 
 # SRCDS parameters
-ENV SRCDS_GAME garrysmod
-ENV SRCDS_HOSTNAME "Speranza's Mod"
+ENV SRCDS_GAME=garrysmod
+ENV SRCDS_HOSTNAME="Speranza's Mod"
 
 # Copy scripts
 COPY update.txt /srv/srcds/update.txt
