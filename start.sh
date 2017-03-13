@@ -6,4 +6,4 @@ then
     exit;
 fi
 
-/srv/srcds/serverfiles/srcds_run -game $SRCDS_GAME -ip $BIND_IP -port $BIND_PORT -strictportbind "$@"
+/srv/srcds/serverfiles/srcds_run -game $SRCDS_GAME -ip $BIND_IP -port $BIND_PORT -strictportbind -tvdisable "$@"
