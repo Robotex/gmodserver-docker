@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ! -f /srv/srcds/serverfiles/srcds_run ]
+if [ ! -f /usr/games/gameserver/serverfiles/srcds_run ]
 then
     echo "Executable not found!"
     exit;
