@@ -1,0 +1,8 @@
+// install_gmod_ds.txt
+//
+@ShutdownOnFailedCommand 1 //set to 0 if updating multiple servers at once
+@NoPromptForPassword 1
+login anonymous 
+force_install_dir /usr/games/gameserver/serverfiles
+app_update 4020 validate
+quit

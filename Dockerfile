@@ -12,23 +12,30 @@ ENV SRCDS_GAME=garrysmod
 ENV SRCDS_HOSTNAME="Speranza's Mod"
 
 # Copy scripts
-COPY update.txt /srv/srcds/update.txt
-COPY start.sh /srv/srcds/start.sh
+COPY ./scripts/ /usr/games/gameserver/
 
-# Copy cfg
-COPY server.cfg /srv/srcds/serverfiles/${SRCDS_GAME}/cfg/server.cfg
+# Copy cfg callback
+COPY server.cfg /usr/games/gameserver/serverfiles/${SRCDS_GAME}/cfg/server.cfg
 
-# Install dependencies & assign files ownership
+# Install dependencies
 RUN apt-get update \
     && apt-get -y install lib32ncurses5 \
     && rm -rf /var/lib/apt/lists/* \
-    && chown gameserver:gameserver /srv/srcds/update.txt /srv/srcds/start.sh \
-    && chmod +x /srv/srcds/start.sh \
-    && ln -s /srv/srcds/serverfiles/${SRCDS_GAME}/addons /srv/srcds/addons \
-    && ln -s /srv/srcds/serverfiles/${SRCDS_GAME}/cfg/server.cfg /srv/srcds/server.cfg
-
+# Create forward mount symlinks
+    && mkdir -p /mnt/srcds \
+    && ln -s /usr/games/gameserver/serverfiles/${SRCDS_GAME}/addons /mnt/srcds/addons \
+    && ln -s /usr/games/gameserver/serverfiles/${SRCDS_GAME}/cfg/server /mnt/srcds/cfg-server \
+# Create reverse mount symlinks
+    && mkdir -p /usr/games/gameserver/serverfiles/${SRCDS_GAME}/cfg \
+    && ln -s /usr/games/gameserver/mods/addons /usr/games/gameserver/serverfiles/${SRCDS_GAME}/addons \
+    && ln -s /usr/games/gameserver/mods/cfg/server /usr/games/gameserver/serverfiles/${SRCDS_GAME}/cfg/server \
+# Create user customization folders
+    && mkdir -p /usr/games/gameserver/mods/addons /usr/games/gameserver/mods/cfg/server \
+# Change permissions
+    && chown -R gameserver:gameserver /usr/games/gameserver \
+    && chmod +x /usr/games/gameserver/start.sh
 
 # Switch to non root user
 USER gameserver
 
-CMD ["+map gm_construct", "-tickrate 16"]
+CMD ["+map gm_flatgrass", "-tickrate 16"]
