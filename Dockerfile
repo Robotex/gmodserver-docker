@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Default port binding
 ENV BIND_PORT=27015
-ENV BIND_IP=
+ENV BIND_IP=0.0.0.0
 
 # SRCDS parameters
 ENV SRCDS_GAME=garrysmod
@@ -38,4 +38,4 @@ RUN apt-get update \
 # Switch to non root user
 USER gameserver
 
-CMD ["+map gm_construct", "+gamemode sandbox", "-tickrate 16", "-maxplayers 16"]
+CMD ["+map gm_construct", "+gamemode sandbox", "-maxplayers 16", "-tickrate 16"]
