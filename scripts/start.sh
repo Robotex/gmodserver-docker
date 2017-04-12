@@ -30,7 +30,7 @@ rm /var/lock/gameserver.lock || true
 
 trap _trapTERM 15
 
-/usr/games/gameserver/serverfiles/srcds_run -game $SRCDS_GAME -ip $BIND_IP -port $BIND_PORT +clientport $SRCDS_CLIENT_PORT +host_workshop_collection $WORKSHOP_COLLECTION -authkey $AUTHKEY +r_hunkalloclightmaps 0 -pingboost 2 -timeout 0 -tvdisable -nohltv -strictportbind "$@" -norestart +exec server/autoexec.cfg -steam_dir ~/.steam/steamcmd -steamcmd_script /usr/games/gameserver/update.txt +hostname \"${SRCDS_HOSTNAME}\" &
+/usr/games/gameserver/serverfiles/srcds_run -game $SRCDS_GAME -ip $BIND_IP -port $BIND_PORT +clientport $SRCDS_CLIENT_PORT +host_workshop_collection $WORKSHOP_COLLECTION -authkey $AUTHKEY -pingboost 1 -timeout 0 -tvdisable -nohltv -strictportbind "$@" -norestart +exec server/autoexec.cfg -steam_dir ~/.steam/steamcmd -steamcmd_script /usr/games/gameserver/update.txt +hostname \"${SRCDS_HOSTNAME}\" &
 
 childpid=$! 
 while wait $childpid; test $? -gt 128; do
