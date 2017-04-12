@@ -38,4 +38,4 @@ RUN apt-get update \
 # Switch to non root user
 USER gameserver
 
-CMD ["+map gm_flatgrass", "-tickrate 16"]
+CMD ["+map gm_construct", "+gamemode sandbox", "-tickrate 16", "-maxplayers 16"]
