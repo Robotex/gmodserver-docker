@@ -5,7 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Default port binding
 ENV BIND_PORT=27015
-ENV BIND_IP=0.0.0.0
+ENV BIND_IP=
 
 # SRCDS parameters
 ENV SRCDS_GAME=garrysmod
